@@ -59,6 +59,13 @@ Source of truth: `components.json` aliases + Next.js App Router rules.
   not a violation. What *is* a violation: something colocated in one
   route that a second route also needs. That's the signal to move it to
   `src/components/` or `src/lib/`, not copy it.
+- Page/section **copy and structured business data** (service
+  descriptions, FAQ entries, service×city content) belongs in a
+  colocated `*-content.ts`/`.md` file next to the component/route that
+  renders it, promoted to `src/content/` once reused across routes —
+  same promote-on-second-use rule as components/hooks above. The rules
+  for what goes *in* those files (language, tone, no fabricated facts,
+  SEO structure) live in `copywriting-legal-es` and `seo-local`, not here.
 
 If you're unsure where a new file belongs, that uncertainty is itself a
 signal — smaller, single-purpose files are easier to place correctly
