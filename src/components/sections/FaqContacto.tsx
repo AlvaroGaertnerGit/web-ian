@@ -127,21 +127,14 @@ export function FaqContacto() {
         data-light="dark"
         className="relative bg-ink px-6 md:px-11 py-14 flex flex-col justify-between overflow-hidden min-h-[360px]"
       >
-        <div
-          className="absolute inset-0 opacity-60"
-          style={{
-            background:
-              "repeating-linear-gradient(70deg, #141414, #141414 4px, #1c1c1c 4px, #1c1c1c 40px)",
-          }}
-        />
-        {/* Resolution glow: the light gathers around the closing line instead
-            of the scene ending abruptly. */}
+        {/* Ambient light standing in for the removed diagonal pattern: the
+            message gathers attention from a soft white glow, not a texture. */}
         <Reveal
           variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.6 } } }}
-          className="absolute inset-x-0 bottom-0 h-[70%] pointer-events-none"
+          className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(60% 60% at 20% 100%, rgba(255,214,150,0.16) 0%, rgba(255,190,120,0.06) 45%, rgba(255,190,120,0) 75%)",
+              "radial-gradient(65% 65% at 38% 62%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.045) 40%, rgba(255,255,255,0) 72%)",
           }}
         >
           <span />

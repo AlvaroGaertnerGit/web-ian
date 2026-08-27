@@ -25,41 +25,31 @@ import { contactContent } from "@/content/contact.es";
 const CUT_CLIP_PATH = "polygon(86% 12.1%, 100% 12.1%, 100% 100%, 67% 100%)";
 
 /**
- * Solid geometric street lamp silhouette (base, pole and cobra-head arm),
- * matching the flat, angular fill language of the owl mark. Sourced from
- * Noun Project "street lamp" #8280539 by Muhammad Nur Auliady Pamungkas,
- * CC BY 3.0 — attribution is required wherever this icon is used; see
- * docs/references/icons/CREDITS.md.
+ * Renders the actual public/motif-street-lamp.svg asset (not a redrawn
+ * copy) via a CSS mask, so it keeps taking its fill from `currentColor`
+ * like an inline SVG would. viewBox is 46:98 (w:h) — the explicit
+ * aspect-ratio replicates the intrinsic ratio a real <svg> would report,
+ * so `h-full w-auto` sizing keeps working unchanged.
  */
 function StreetLamp({ className }: { className?: string }) {
   return (
-    <svg
+    <span
       aria-hidden
-      viewBox="27 1 46 98"
-      fill="currentColor"
       className={className}
-    >
-      <path
-        fillRule="evenodd"
-        d="m37.879 64.238v-37.176c0-3.0703 1.6367-5.9062 4.2969-7.4414l14.98-8.6484 0.32422-3.3438 7.8008-4.5039 3.0586 1.3906 2.3438 4.0586-26.164 15.105c-1.207 0.69922-1.9531 1.9883-1.9531 3.3828v37.176z"
-      />
-      <path
-        fillRule="evenodd"
-        d="m70 10.77 0.62109 4.7891-6.1094 3.5273-3.8359-2.9336 9.3281-5.3867z"
-      />
-      <path
-        fillRule="evenodd"
-        d="m37.098 87.473v-21.672h6.2461v21.672z"
-      />
-      <path
-        fillRule="evenodd"
-        d="m33.973 89.035h12.496v6.2461h-12.496z"
-      />
-      <path
-        fillRule="evenodd"
-        d="m29.289 93.723h21.867v3.125h-21.867z"
-      />
-    </svg>
+      style={{
+        display: "block",
+        aspectRatio: "46 / 98",
+        backgroundColor: "currentColor",
+        WebkitMaskImage: "url(/motif-street-lamp.svg)",
+        maskImage: "url(/motif-street-lamp.svg)",
+        WebkitMaskRepeat: "no-repeat",
+        maskRepeat: "no-repeat",
+        WebkitMaskPosition: "center",
+        maskPosition: "center",
+        WebkitMaskSize: "contain",
+        maskSize: "contain",
+      }}
+    />
   );
 }
 
@@ -173,20 +163,27 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            className="absolute left-[32.5%] top-[75%] w-[6%] h-[25%] text-paper/70 pointer-events-none"
+            className="absolute left-[32.5%] top-[75%] w-[6%] h-[25%] pointer-events-none"
             style={{ y: lampY, opacity: lampOpacity }}
           >
-            <StaggerItem variants={heroStaggerItem} className="h-full w-full">
-              <StreetLamp className="h-full w-auto" />
+            {/* Positioned relative to the lamp's own box (not the wider
+                outer slot) so the glow's anchor maps directly to the
+                bulb's coordinates in the SVG's viewBox: roughly 84%/14%. */}
+            <StaggerItem
+              variants={heroStaggerItem}
+              className="relative inline-block h-full text-paper/70"
+              style={{ aspectRatio: "46 / 98" }}
+            >
+              <StreetLamp className="h-full w-full" />
+              <motion.div
+                variants={heroGlowIn}
+                className="absolute left-[84%] top-[15%] -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%]"
+                style={{
+                  background:
+                    "radial-gradient(closest-side, rgba(255,214,150,0.55) 0%, rgba(255,190,120,0.22) 30%, rgba(255,170,100,0.08) 56%, rgba(255,170,100,0) 80%)",
+                }}
+              />
             </StaggerItem>
-            <motion.div
-              variants={heroGlowIn}
-              className="absolute left-[95%] top-[10%] -translate-x-1/2 -translate-y-1/2 w-[430%] h-[430%]"
-              style={{
-                background:
-                  "radial-gradient(closest-side, rgba(255,214,150,0.55) 0%, rgba(255,190,120,0.22) 30%, rgba(255,170,100,0.08) 56%, rgba(255,170,100,0) 80%)",
-              }}
-            />
           </motion.div>
 
           {/*
