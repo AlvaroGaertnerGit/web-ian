@@ -6,16 +6,10 @@ import { useMotionValueEvent, useScroll } from "framer-motion";
 import { Wordmark } from "@/components/ui/Wordmark";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { CloseIcon, MenuIcon } from "@/components/ui/icons";
+import { navLinks } from "@/content/home.es";
+import { contactContent } from "@/content/contact.es";
 
-const NAV_LINKS = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Cómo trabajamos", href: "#como-trabajamos" },
-  { label: "Nosotros", href: "#confianza" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contacto", href: "#contacto" },
-];
-
-const SECTION_IDS = NAV_LINKS.map((l) => l.href.slice(1));
+const SECTION_IDS = navLinks.map((l) => l.href.slice(1));
 
 /**
  * Fixed site header, mounted once in the root layout — it lives outside
@@ -80,10 +74,11 @@ export function Header() {
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
+              aria-current={activeId === link.href.slice(1) ? "true" : undefined}
               className={`text-[11px] font-semibold uppercase tracking-[0.05em] whitespace-nowrap transition-opacity hover:opacity-100 ${
                 activeId === link.href.slice(1)
                   ? "text-paper opacity-100"
@@ -97,7 +92,7 @@ export function Header() {
 
         <div className="hidden lg:block">
           <CtaButton href="#contacto" variant="light" className="text-[10px] px-4 py-2.5">
-            Contactar
+            {contactContent.cta.navbar}
           </CtaButton>
         </div>
 
@@ -115,17 +110,19 @@ export function Header() {
 
       <div
         id="mobile-menu"
+        inert={!mobileOpen}
         className={`lg:hidden overflow-hidden bg-ink border-t border-hairline-dark transition-[grid-template-rows] duration-300 ease-out grid ${
           mobileOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >
         <div className="min-h-0">
           <nav className="flex flex-col px-6 py-6 gap-5">
-            {NAV_LINKS.map((link) => (
+            {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
+                aria-current={activeId === link.href.slice(1) ? "true" : undefined}
                 className={`text-[15px] font-semibold uppercase tracking-[0.02em] ${
                   activeId === link.href.slice(1) ? "text-paper" : "text-ink-muted"
                 }`}
@@ -141,7 +138,7 @@ export function Header() {
               fullWidth
               onClick={() => setMobileOpen(false)}
             >
-              Cuéntanos tu caso
+              {contactContent.cta.primary}
             </CtaButton>
           </div>
         </div>

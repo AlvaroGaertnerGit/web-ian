@@ -11,7 +11,7 @@ type WordmarkProps = {
  * image, never reproduced with HTML/CSS text.
  */
 const SOURCES = {
-  light: { src: "/brand/letras-white.png", width: 2000, height: 1475 },
+  light: { src: "/brand/letras-white.png", width: 1191, height: 878 },
   dark: { src: "/brand/letras-black.png", width: 1191, height: 878 },
 };
 

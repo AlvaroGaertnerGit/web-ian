@@ -14,6 +14,8 @@ import {
   staggerContainer,
   staggerItem,
 } from "@/lib/motion/variants";
+import { heroContent } from "@/content/home.es";
+import { contactContent } from "@/content/contact.es";
 
 /**
  * Traced from docs/references/hero/hero.png (696x446): the paper wedge is fully
@@ -109,7 +111,7 @@ export function Hero() {
           <motion.div className="absolute top-[23.1%] left-[7.3%]" style={{ y: contentY }}>
             <StaggerItem variants={heroStaggerItem}>
               <p className="text-[clamp(9px,1.55vw,13px)] font-bold uppercase tracking-[0.22em] text-ink-muted">
-                Investigación privada
+                {heroContent.eyebrow}
               </p>
             </StaggerItem>
           </motion.div>
@@ -122,15 +124,11 @@ export function Hero() {
               variants={staggerContainer}
               className="font-display text-paper leading-[0.82] text-[clamp(2.75rem,10.6vw,10.5rem)]"
             >
-              <motion.span variants={staggerItem} className="block">
-                Necesitas
-              </motion.span>
-              <motion.span variants={staggerItem} className="block">
-                saber la
-              </motion.span>
-              <motion.span variants={staggerItem} className="block">
-                verdad.
-              </motion.span>
+              {heroContent.titleLines.map((line) => (
+                <motion.span key={line} variants={staggerItem} className="block">
+                  {line}
+                </motion.span>
+              ))}
             </motion.h1>
           </motion.div>
 
@@ -140,8 +138,7 @@ export function Hero() {
           >
             <StaggerItem variants={heroStaggerItem}>
               <p className="text-[clamp(12px,1.85vw,16px)] leading-[1.55] text-[#c9c6c0]">
-                Obtenemos información objetiva y verificable para que tomes
-                decisiones con seguridad.
+                {heroContent.subtitle}
               </p>
             </StaggerItem>
           </motion.div>
@@ -170,7 +167,7 @@ export function Hero() {
                 variant="light"
                 className="text-[clamp(11px,1.7vw,25px)] px-[clamp(20px,7.3vw,104px)] py-[clamp(13px,2.65vw,38px)]"
               >
-                Cuéntanos tu caso
+                {contactContent.cta.primary}
               </CtaButton>
             </StaggerItem>
           </motion.div>
@@ -218,29 +215,29 @@ export function Hero() {
           variants={staggerItem}
           className="text-[11px] font-bold uppercase tracking-[0.22em] text-ink-muted"
         >
-          Investigación privada
+          {heroContent.eyebrow}
         </StaggerItem>
         <StaggerItem
+          as="h1"
           variants={staggerItem}
           className="font-display text-paper leading-[0.94] text-[13vw] mt-4"
         >
-          Necesitas saber la verdad.
+          {heroContent.titleLines.join(" ")}
         </StaggerItem>
         <StaggerItem
           variants={staggerItem}
           className="mt-5 text-[15px] leading-[1.65] text-[#c9c6c0]"
         >
-          Obtenemos información objetiva y verificable para que tomes
-          decisiones con seguridad.
+          {heroContent.subtitle}
         </StaggerItem>
         <StaggerItem variants={staggerItem}>
           <CtaButton href="#contacto" variant="light" className="mt-7">
-            Cuéntanos tu caso
+            {contactContent.cta.primary}
           </CtaButton>
         </StaggerItem>
 
         <StaggerItem variants={staggerItem} className="mt-12 flex items-end justify-between">
-          <OwlMark part="cuerpo" tone="white" className="h20 w-auto" />
+          <OwlMark part="cuerpo" tone="white" className="h-20 w-auto" />
           {/* <div className="text-right">
             <p className="text-[11px] font-bold tracking-[0.12em] text-paper">
               MADRID · ESPAÑA

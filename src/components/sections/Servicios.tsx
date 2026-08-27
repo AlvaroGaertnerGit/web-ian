@@ -15,30 +15,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { fadeIn } from "@/lib/motion/variants";
 import { easing } from "@/lib/motion";
-
-const SERVICES = [
-  {
-    number: "01",
-    title: "Particulares",
-    description: "Investigaciones personales, familiares y patrimoniales.",
-  },
-  {
-    number: "02",
-    title: "Empresas",
-    description: "Fraude interno, competencia desleal, absentismo laboral, etc.",
-  },
-  {
-    number: "03",
-    title: "Abogados",
-    description:
-      "Apoyo probatorio, localización de deudores, investigación patrimonial.",
-  },
-  {
-    number: "04",
-    title: "Investigación digital",
-    description: "Obtención y análisis de información en entornos digitales.",
-  },
-];
+import { serviciosContent } from "@/content/home.es";
 
 /**
  * Geometry for the "lupa observando al búho" scene. Everything is expressed
@@ -106,7 +83,7 @@ export function Servicios() {
       <Reveal>
         {/* <div className="text-[12px] font-bold text-paper-muted">02</div> */}
         <h2 className="font-display text-[32px] md:text-[2.9vw] xl:text-[38px] leading-[1] mt-3">
-          Servicios de investigación
+          {serviciosContent.title}
         </h2>
 
         {/*
@@ -178,9 +155,9 @@ export function Servicios() {
       </Reveal>
 
       <StaggerGroup delay={0.1}>
-        {SERVICES.map((service) => (
+        {serviciosContent.items.map((service) => (
           <StaggerItem
-            key={service.number}
+            key={service.id}
             className="border-b border-hairline"
           >
             <a

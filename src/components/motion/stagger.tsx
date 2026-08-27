@@ -75,6 +75,8 @@ type StaggerItemProps = {
   className?: string;
   variants?: Variants;
   style?: MotionStyle;
+  /** Render as this element instead of a div — use for real headings (e.g. "h1") so heading hierarchy stays correct even when the content needs stagger/motion. */
+  as?: "div" | "h1" | "h2" | "h3";
 };
 
 export function StaggerItem({
@@ -82,10 +84,13 @@ export function StaggerItem({
   className,
   variants = staggerItem,
   style,
+  as = "div",
 }: StaggerItemProps) {
+  const MotionTag =
+    as === "h1" ? motion.h1 : as === "h2" ? motion.h2 : as === "h3" ? motion.h3 : motion.div;
   return (
-    <motion.div className={className} variants={variants} style={style}>
+    <MotionTag className={className} variants={variants} style={style}>
       {children}
-    </motion.div>
+    </MotionTag>
   );
 }

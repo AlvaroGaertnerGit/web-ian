@@ -1,10 +1,11 @@
 import { Wordmark } from "@/components/ui/Wordmark";
 import { Reveal } from "@/components/motion/reveal";
 import { fadeIn } from "@/lib/motion/variants";
-
-const LEGAL_LINKS = ["Aviso legal", "Privacidad", "Política de cookies"];
+import { footerContent } from "@/content/home.es";
 
 export function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <Reveal variants={fadeIn} amount={0.5}>
       <footer
@@ -13,12 +14,12 @@ export function Footer() {
       >
         <Wordmark tone="light" size="sm" />
         <div className="text-[12px] text-ink-muted order-3 sm:order-none">
-          © 2026 Búho Detectives. Todos los derechos reservados.
+          © {year} Búho Detectives. Todos los derechos reservados.
         </div>
         <div className="flex gap-6 text-[12px] text-ink-muted">
           {/* No hay páginas legales publicadas todavía — texto informativo,
               no un enlace, para no simular un destino que no existe. */}
-          {LEGAL_LINKS.map((link) => (
+          {footerContent.legalLinks.map((link) => (
             <span key={link}>{link}</span>
           ))}
         </div>

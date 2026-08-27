@@ -12,36 +12,9 @@ import {
 import type { MotionStyle, MotionValue } from "framer-motion";
 
 import { Reveal } from "@/components/motion/reveal";
+import { comoTrabajamosContent } from "@/content/home.es";
 
-const STEPS = [
-  {
-    number: "01",
-    title: "Consulta",
-    description: "Escuchamos tu caso y entendemos tus necesidades.",
-  },
-  {
-    number: "02",
-    title: "Análisis",
-    description: "Valoramos la información y definimos la estrategia adecuada.",
-  },
-  {
-    number: "03",
-    title: "Investigación",
-    description: "Obtenemos datos verificables mediante técnicas profesionales.",
-  },
-  {
-    number: "04",
-    title: "Informe",
-    description:
-      "Entregamos un informe claro, detallado y objetivamente verificable.",
-  },
-  {
-    number: "05",
-    title: "Ratificación",
-    description: "Nuestros informes son ratificables en sede judicial.",
-  },
-];
-
+const STEPS = comoTrabajamosContent.steps;
 type Step = (typeof STEPS)[number];
 
 /**
@@ -347,9 +320,9 @@ export function ComoTrabajamos() {
     <section id="como-trabajamos" data-light="dark" className="bg-ink">
       <div className="px-6 md:px-16 pt-16 md:pt-[6%]">
         <Reveal>
-          <div className="text-[12px] font-bold text-ink-muted">02</div>
+          <div className="text-[12px] font-bold text-ink-muted">{comoTrabajamosContent.sectionNumber}</div>
           <h2 className="font-display text-paper text-[30px] md:text-[2.6vw] xl:text-[34px] mt-3 mb-10 md:mb-12">
-            Cómo trabajamos
+            {comoTrabajamosContent.title}
           </h2>
         </Reveal>
       </div>

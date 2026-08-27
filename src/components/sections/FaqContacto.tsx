@@ -6,33 +6,8 @@ import { MinusIcon, PlusIcon } from "@/components/ui/icons";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
-
-const FAQS = [
-  {
-    question: "¿Es legal contratar un detective privado?",
-    answer:
-      "Sí, es completamente legal. La investigación privada es una profesión regulada en España, y un detective privado colegiado puede obtener pruebas lícitas y admisibles siempre que actúe dentro del marco legal.",
-  },
-  {
-    question: "¿Qué tipo de casos aceptáis?",
-    answer:
-      "Trabajamos con particulares, empresas, abogados y aseguradoras: infidelidades, absentismo laboral, localización de personas, competencia desleal, informes periciales y otros supuestos dentro del marco legal.",
-  },
-  {
-    question: "¿Cómo garantizáis la confidencialidad?",
-    answer:
-      "Toda la información del caso se trata con máxima discreción, tanto durante la investigación como en la comunicación contigo.",
-  },
-  {
-    question: "¿Cuánto tiempo tarda una investigación?",
-    answer:
-      "Depende de la complejidad y el tipo de caso. Tras la consulta inicial te damos una estimación orientativa antes de empezar.",
-  },
-];
-
-const EMAIL = "buhodetectiveprivado@gmail.com";
-const PHONE = "+34 624 56 27 98";
-const PHONE_HREF = "+34624562798";
+import { faqContent } from "@/content/faq.es";
+import { contactContent } from "@/content/contact.es";
 
 function FaqItem({
   question,
@@ -95,14 +70,14 @@ export function FaqContacto() {
         className="px-6 md:px-16 lg:px-12 py-16 md:py-[6%] lg:border-r border-hairline"
       >
         <Reveal>
-          <div className="text-[12px] font-bold text-paper-muted">06</div>
+          <div className="text-[12px] font-bold text-paper-muted">{faqContent.sectionNumber}</div>
           <h2 className="font-display text-[24px] md:text-[26px] mt-3 mb-7">
-            Preguntas frecuentes
+            {faqContent.title}
           </h2>
         </Reveal>
         <StaggerGroup delay={0.1}>
-          {FAQS.map((item, index) => (
-            <StaggerItem key={item.question}>
+          {faqContent.items.map((item, index) => (
+            <StaggerItem key={item.id}>
               <FaqItem
                 question={item.question}
                 answer={item.answer}
@@ -120,35 +95,31 @@ export function FaqContacto() {
         className="px-6 md:px-16 lg:px-10 py-16 md:py-[6%] lg:border-r border-hairline"
       >
         <div id="contacto">
-          <div className="text-[12px] font-bold text-paper-muted">07</div>
+          <div className="text-[12px] font-bold text-paper-muted">{contactContent.sectionNumber}</div>
           <h2 className="font-display text-[20px] md:text-[22px] mt-3 mb-4">
-            Cuéntanos tu caso
+            {contactContent.title}
           </h2>
           <p className="text-[13.5px] leading-[1.6] text-paper-muted mb-7">
-            Estaremos encantados de escucharte. Consulta inicial gratuita y sin
-            compromiso.
+            {contactContent.description}
           </p>
           <div className="text-[10.5px] font-bold tracking-[0.14em] text-paper-muted-2 uppercase">
             Email
           </div>
           <a
-            href={`mailto:${EMAIL}`}
+            href={`mailto:${contactContent.email}`}
             className="block text-[13.5px] mt-1.5 mb-6 hover:opacity-70 transition-opacity"
           >
-            {EMAIL}
+            {contactContent.email}
           </a>
           <div className="text-[10.5px] font-bold tracking-[0.14em] text-paper-muted-2 uppercase">
             Teléfono
           </div>
           <a
-            href={`tel:${PHONE_HREF}`}
+            href={`tel:${contactContent.phone.href}`}
             className="block text-[13.5px] mt-1.5 hover:opacity-70 transition-opacity"
           >
-            {PHONE}
+            {contactContent.phone.display}
           </a>
-          <CtaButton href={`mailto:${EMAIL}`} fullWidth className="mt-8">
-            Contactar ahora
-          </CtaButton>
         </div>
       </Reveal>
 
@@ -179,16 +150,18 @@ export function FaqContacto() {
         <Reveal className="relative">
           <div className="w-9 h-px bg-paper/40 mb-5" />
           <h3 className="font-display text-paper text-[34px] md:text-[2.7vw] xl:text-[40px] leading-[1.06]">
-            La verdad existe.
-            <br />
-            Nosotros te ayudamos
-            <br />a encontrarla.
+            {contactContent.closingPanel.lines.map((line, i) => (
+              <span key={line}>
+                {i > 0 && <br />}
+                {line}
+              </span>
+            ))}
           </h3>
         </Reveal>
 
         <Reveal delay={0.1} className="relative mt-10">
           <CtaButton href="#contacto" variant="light">
-            Cuéntanos tu caso
+            {contactContent.cta.primary}
           </CtaButton>
         </Reveal>
       </div>

@@ -10,13 +10,15 @@ import { Footer } from "@/components/sections/Footer";
 export default function Home() {
   return (
     <div className="flex flex-col flex-1">
-      <Hero />
-      <StatBand />
-      <Servicios />
-      <ComoTrabajamos />
-      <Evidencia />
-      <Confianza />
-      <FaqContacto />
+      <main className="flex flex-col">
+        <Hero />
+        <StatBand />
+        <Servicios />
+        <ComoTrabajamos />
+        <Evidencia />
+        <Confianza />
+        <FaqContacto />
+      </main>
       <Footer />
     </div>
   );

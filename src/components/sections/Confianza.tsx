@@ -8,29 +8,9 @@ import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { useParallax } from "@/lib/motion/use-parallax";
 import { duration, easing } from "@/lib/motion";
+import { confianzaContent } from "@/content/home.es";
 
-const PILLARS = [
-  {
-    number: "01",
-    title: "Confidencialidad",
-    description: "Máxima discreción en cada actuación.",
-  },
-  {
-    number: "02",
-    title: "Legalidad",
-    description: "Cumplimos la ley y actuamos dentro del marco legal.",
-  },
-  {
-    number: "03",
-    title: "Profesionalidad",
-    description: "Investigadores titulados con amplia trayectoria.",
-  },
-  {
-    number: "04",
-    title: "Rigor",
-    description: "Métodos y técnicas contrastadas.",
-  },
-];
+const PILLARS = confianzaContent.pillars;
 
 // Node centers as % of the beam's width — aligned to the 4-column grid below.
 const NODE_X = [12.5, 37.5, 62.5, 87.5];
@@ -122,9 +102,9 @@ export function Confianza() {
       className="relative bg-ink px-6 md:px-16 py-16 md:py-[6%] overflow-hidden"
     >
       <Reveal>
-        <div className="text-[12px] font-bold text-ink-muted">05</div>
+        <div className="text-[12px] font-bold text-ink-muted">{confianzaContent.sectionNumber}</div>
         <h2 className="font-display text-paper text-[30px] md:text-[2.6vw] xl:text-[34px] leading-[1.08] mt-3 max-w-[600px]">
-          Confianza que respalda nuestro trabajo.
+          {confianzaContent.title}
         </h2>
       </Reveal>
 
