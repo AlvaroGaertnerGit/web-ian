@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "iconstack": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://sglpxftkuzsqdpdhftwv.supabase.co/functions/v1/mcp"
+      ],
+      "env": {}
+    }
+  }
+}
