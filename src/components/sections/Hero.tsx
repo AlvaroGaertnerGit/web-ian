@@ -278,14 +278,14 @@ export function Hero() {
         </StaggerItem>
 
         <StaggerItem variants={staggerItem} className="mt-12 flex items-end justify-between">
-          <OwlMark part="cara" tone="white" className="h-40 w-auto" />
-          <div className="text-right">
+          <OwlMark part="cuerpo" tone="white" className="h20 w-auto" />
+          {/* <div className="text-right">
             <p className="text-[11px] font-bold tracking-[0.12em] text-paper">
               MADRID · ESPAÑA
             </p>
             <div className="w-full h-px bg-paper/20 my-2" />
             <p className="text-[11px] text-ink-muted">40.4168° N, 3.7038° W</p>
-          </div>
+          </div> */}
         </StaggerItem>
       </StaggerGroup>
     </section>
