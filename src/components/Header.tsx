@@ -79,7 +79,7 @@ export function Header() {
               key={link.href}
               href={link.href}
               aria-current={activeId === link.href.slice(1) ? "true" : undefined}
-              className={`text-[11px] font-semibold uppercase tracking-[0.05em] whitespace-nowrap transition-opacity hover:opacity-100 ${
+              className={`text-[12px] font-semibold uppercase tracking-[0.05em] whitespace-nowrap transition-opacity hover:opacity-100 ${
                 activeId === link.href.slice(1)
                   ? "text-paper opacity-100"
                   : "text-paper opacity-65"
@@ -123,7 +123,7 @@ export function Header() {
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 aria-current={activeId === link.href.slice(1) ? "true" : undefined}
-                className={`text-[15px] font-semibold uppercase tracking-[0.02em] ${
+                className={`text-[16px] font-semibold uppercase tracking-[0.02em] ${
                   activeId === link.href.slice(1) ? "text-paper" : "text-ink-muted"
                 }`}
               >

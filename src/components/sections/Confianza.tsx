@@ -159,7 +159,7 @@ export function Confianza() {
                 </motion.div>
                 <motion.p
                   variants={textVariants}
-                  className="text-[12.5px] leading-[1.55] text-ink-muted mt-3 max-w-[220px]"
+                  className="text-[13.5px] leading-[1.55] text-ink-muted mt-3 max-w-[220px]"
                 >
                   {pillar.description}
                 </motion.p>
@@ -191,7 +191,7 @@ export function Confianza() {
                   <motion.div variants={textVariants} className="font-display text-paper text-[18px] mt-3">
                     {pillar.title}
                   </motion.div>
-                  <motion.p variants={textVariants} className="text-[12.5px] leading-[1.55] text-ink-muted mt-2 max-w-[240px]">
+                  <motion.p variants={textVariants} className="text-[13.5px] leading-[1.55] text-ink-muted mt-2 max-w-[240px]">
                     {pillar.description}
                   </motion.p>
                 </div>

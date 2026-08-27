@@ -173,7 +173,7 @@ export function Servicios() {
                   {service.title}
                 </span>
               </div>
-              <div className="flex-1 max-w-[280px] text-[13px] leading-[1.55] text-paper-muted">
+              <div className="flex-1 max-w-[280px] text-[14px] leading-[1.55] text-paper-muted">
                 {service.description}
               </div>
               <ArrowIcon className="h-[18px] w-[18px] shrink-0 mt-1 hidden sm:block" />

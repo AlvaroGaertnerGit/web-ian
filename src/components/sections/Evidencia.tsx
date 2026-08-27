@@ -41,7 +41,7 @@ export function Evidencia() {
                     {item.number}
                   </span>
                   <div className="font-display text-[16px] md:text-[17px] mt-2">{item.title}</div>
-                  <p className="text-[12.5px] leading-[1.55] text-paper-muted mt-2 pr-7">
+                  <p className="text-[13.5px] leading-[1.55] text-paper-muted mt-2 pr-7">
                     {item.description}
                   </p>
                   <ArrowIcon

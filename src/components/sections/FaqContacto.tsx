@@ -53,7 +53,7 @@ function FaqItem({
         }`}
       >
         <div className="min-h-0">
-          <p className="text-[13px] leading-[1.6] text-paper-muted pb-5 pr-8">{answer}</p>
+          <p className="text-[14px] leading-[1.6] text-paper-muted pb-5 pr-8">{answer}</p>
         </div>
       </div>
     </div>
@@ -99,7 +99,7 @@ export function FaqContacto() {
           <h2 className="font-display text-[20px] md:text-[22px] mt-3 mb-4">
             {contactContent.title}
           </h2>
-          <p className="text-[13.5px] leading-[1.6] text-paper-muted mb-7">
+          <p className="text-[14.5px] leading-[1.6] text-paper-muted mb-7">
             {contactContent.description}
           </p>
           <div className="text-[10.5px] font-bold tracking-[0.14em] text-paper-muted-2 uppercase">
@@ -107,7 +107,7 @@ export function FaqContacto() {
           </div>
           <a
             href={`mailto:${contactContent.email}`}
-            className="block text-[13.5px] mt-1.5 mb-6 hover:opacity-70 transition-opacity"
+            className="block text-[14.5px] mt-1.5 mb-6 hover:opacity-70 transition-opacity"
           >
             {contactContent.email}
           </a>
@@ -116,7 +116,7 @@ export function FaqContacto() {
           </div>
           <a
             href={`tel:${contactContent.phone.href}`}
-            className="block text-[13.5px] mt-1.5 hover:opacity-70 transition-opacity"
+            className="block text-[14.5px] mt-1.5 hover:opacity-70 transition-opacity"
           >
             {contactContent.phone.display}
           </a>
@@ -127,21 +127,14 @@ export function FaqContacto() {
         data-light="dark"
         className="relative bg-ink px-6 md:px-11 py-14 flex flex-col justify-between overflow-hidden min-h-[360px]"
       >
-        <div
-          className="absolute inset-0 opacity-60"
-          style={{
-            background:
-              "repeating-linear-gradient(70deg, #141414, #141414 4px, #1c1c1c 4px, #1c1c1c 40px)",
-          }}
-        />
         {/* Resolution glow: the light gathers around the closing line instead
             of the scene ending abruptly. */}
         <Reveal
           variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.6 } } }}
-          className="absolute inset-x-0 bottom-0 h-[70%] pointer-events-none"
+          className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(60% 60% at 20% 100%, rgba(255,214,150,0.16) 0%, rgba(255,190,120,0.06) 45%, rgba(255,190,120,0) 75%)",
+              "radial-gradient(65% 55% at 38% 38%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 32%, rgba(255,255,255,0.02) 55%, rgba(255,255,255,0) 78%)",
           }}
         >
           <span />

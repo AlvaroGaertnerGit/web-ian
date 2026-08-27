@@ -43,7 +43,7 @@ function StepBlock({ step, style }: { step: Step; style?: MotionStyle }) {
       <div className="text-[12.5px] font-bold uppercase tracking-[0.06em] text-paper mt-3.5">
         {step.title}
       </div>
-      <div className="text-[12.5px] leading-[1.55] text-ink-muted mt-2">
+      <div className="text-[13.5px] leading-[1.55] text-ink-muted mt-2">
         {step.description}
       </div>
     </motion.div>

@@ -48,7 +48,7 @@ export function StatBand() {
               <div className="text-[12.5px] font-bold uppercase tracking-[0.08em] text-paper mt-4">
                 {stat.title}
               </div>
-              <div className="text-[13px] leading-[1.55] text-ink-muted mt-2">
+              <div className="text-[14px] leading-[1.55] text-ink-muted mt-2">
                 {stat.description}
               </div>
             </StaggerItem>

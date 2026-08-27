@@ -137,7 +137,7 @@ export function Hero() {
             style={{ y: contentY }}
           >
             <StaggerItem variants={heroStaggerItem}>
-              <p className="text-[clamp(12px,1.85vw,16px)] leading-[1.55] text-[#c9c6c0]">
+              <p className="text-[clamp(13px,1.95vw,17px)] leading-[1.55] text-[#c9c6c0]">
                 {heroContent.subtitle}
               </p>
             </StaggerItem>
@@ -226,7 +226,7 @@ export function Hero() {
         </StaggerItem>
         <StaggerItem
           variants={staggerItem}
-          className="mt-5 text-[15px] leading-[1.65] text-[#c9c6c0]"
+          className="mt-5 text-[16px] leading-[1.65] text-[#c9c6c0]"
         >
           {heroContent.subtitle}
         </StaggerItem>
