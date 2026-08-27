@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { TargetAndTransition, Variants } from "framer-motion";
-import type { CSSProperties, ReactNode } from "react";
+import type { MotionStyle, TargetAndTransition, Variants } from "framer-motion";
+import type { ReactNode } from "react";
 
 import { staggerContainer, staggerItem } from "@/lib/motion/variants";
 
@@ -70,10 +70,11 @@ export function StaggerGroup({
 }
 
 type StaggerItemProps = {
-  children: ReactNode;
+  /** Optional — omit for a purely decorative leaf (a shape, a gradient) with no content of its own. */
+  children?: ReactNode;
   className?: string;
   variants?: Variants;
-  style?: CSSProperties;
+  style?: MotionStyle;
 };
 
 export function StaggerItem({
