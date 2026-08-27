@@ -1,51 +1,69 @@
-import { MapPinIcon, PersonIcon, StackIcon, DocumentIcon } from "@/components/ui/icons";
+import { ArrowIcon } from "@/components/ui/icons";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
+import {
+  DocumentacionIllustration,
+  InformesIllustration,
+  LocalizacionesIllustration,
+  VigilanciasIllustration,
+} from "@/components/sections/EvidenciaIllustrations";
 
 const ITEMS = [
   {
-    icon: PersonIcon,
+    number: "01",
     title: "Vigilancias",
     description:
       "Seguimiento discreto y documentación fotográfica y videográfica.",
+    Illustration: VigilanciasIllustration,
   },
   {
-    icon: DocumentIcon,
+    number: "02",
     title: "Documentación",
     description: "Obtención y análisis de documentos e información.",
+    Illustration: DocumentacionIllustration,
   },
   {
-    icon: MapPinIcon,
+    number: "03",
     title: "Localizaciones",
     description: "Geolocalización y seguimiento de objetivos y bienes.",
+    Illustration: LocalizacionesIllustration,
   },
   {
-    icon: StackIcon,
+    number: "04",
     title: "Informes",
     description: "Informes detallados, claros y ratificables en juicio.",
+    Illustration: InformesIllustration,
   },
 ];
 
 export function Evidencia() {
   return (
-    <section data-light="light" className="bg-paper px-6 md:px-16 py-16 md:py-[6%]">
+    <section id="evidencia" data-light="light" className="bg-paper px-6 md:px-16 py-16 md:py-[6%]">
       <Reveal>
         <div className="text-[12px] font-bold text-paper-muted">04</div>
-        <h2 className="font-display text-[30px] md:text-[2.6vw] xl:text-[34px] mt-3 mb-10 md:mb-12 max-w-[600px]">
+        <h2 className="font-display text-[30px] md:text-[2.6vw] xl:text-[34px] mt-3 mb-10 md:mb-14 max-w-[600px]">
           Convertimos hechos en evidencia.
         </h2>
       </Reveal>
-      <StaggerGroup className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6" delay={0.1}>
-        {ITEMS.map((item, i) => (
-          <StaggerItem key={item.title} className={i % 2 === 1 ? "lg:mt-6" : ""}>
-            <div className="aspect-[4/3.4] rounded-sm bg-[#141414] flex items-center justify-center">
-              <item.icon className="h-8 w-8 text-paper/85" />
+
+      <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6" delay={0.1}>
+        {ITEMS.map((item) => (
+          <StaggerItem key={item.number} className="group border border-hairline">
+            <div className="aspect-[4/3.3] flex items-center justify-center px-6 py-6">
+              <item.Illustration className="w-[70%] h-auto" />
             </div>
-            <div className="text-[13px] font-bold uppercase tracking-[0.05em] mt-4">
-              {item.title}
-            </div>
-            <div className="text-[12.5px] leading-[1.55] text-paper-muted mt-2">
-              {item.description}
+
+            <div className="relative border-t border-hairline px-5 py-5 md:px-6 md:py-6">
+              <span className="text-[12px] font-bold text-paper-muted-2 tabular-nums">
+                {item.number}
+              </span>
+              <div className="font-display text-[16px] md:text-[17px] mt-2">{item.title}</div>
+              <p className="text-[12.5px] leading-[1.55] text-paper-muted mt-2 pr-7">
+                {item.description}
+              </p>
+              <ArrowIcon
+                className="absolute bottom-5 right-5 md:bottom-6 md:right-6 h-4 w-4 transition-transform duration-300 ease-out [transform:rotate(-45deg)] group-hover:[transform:rotate(-45deg)_translate(1px,-1px)]"
+              />
             </div>
           </StaggerItem>
         ))}
