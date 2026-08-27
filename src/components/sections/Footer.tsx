@@ -13,13 +13,13 @@ export function Footer() {
       >
         <Wordmark tone="light" size="sm" />
         <div className="text-[12px] text-ink-muted order-3 sm:order-none">
-          © 2024 Búho Detectives. Todos los derechos reservados.
+          © 2026 Búho Detectives. Todos los derechos reservados.
         </div>
         <div className="flex gap-6 text-[12px] text-ink-muted">
+          {/* No hay páginas legales publicadas todavía — texto informativo,
+              no un enlace, para no simular un destino que no existe. */}
           {LEGAL_LINKS.map((link) => (
-            <a key={link} href="#" className="hover:text-paper transition-colors">
-              {link}
-            </a>
+            <span key={link}>{link}</span>
           ))}
         </div>
       </footer>

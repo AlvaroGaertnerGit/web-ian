@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, Archivo_Black } from "next/font/google";
 import { CursorLight } from "@/components/ui/CursorLight";
+import { Header } from "@/components/Header";
 import { MotionProvider } from "@/components/motion-provider";
 import "./globals.css";
 
@@ -27,10 +28,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
-      className={`${archivo.variable} ${archivoBlack.variable} h-full antialiased`}
+      className={`${archivo.variable} ${archivoBlack.variable} h-full antialiased scroll-pt-24`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <Header />
+          {children}
+        </MotionProvider>
         <CursorLight />
       </body>
     </html>

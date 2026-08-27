@@ -1,16 +1,93 @@
-import { ArrowIcon, PlusIcon } from "@/components/ui/icons";
+"use client";
+
+import { useState } from "react";
+
+import { MinusIcon, PlusIcon } from "@/components/ui/icons";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 
 const FAQS = [
-  "¿Es legal contratar un detective privado?",
-  "¿Qué tipo de casos aceptáis?",
-  "¿Cómo garantizáis la confidencialidad?",
-  "¿Cuánto tiempo tarda una investigación?",
+  {
+    question: "¿Es legal contratar un detective privado?",
+    answer:
+      "Sí, es completamente legal. La investigación privada es una profesión regulada en España, y un detective privado colegiado puede obtener pruebas lícitas y admisibles siempre que actúe dentro del marco legal.",
+  },
+  {
+    question: "¿Qué tipo de casos aceptáis?",
+    answer:
+      "Trabajamos con particulares, empresas, abogados y aseguradoras: infidelidades, absentismo laboral, localización de personas, competencia desleal, informes periciales y otros supuestos dentro del marco legal.",
+  },
+  {
+    question: "¿Cómo garantizáis la confidencialidad?",
+    answer:
+      "Toda la información del caso se trata con máxima discreción, tanto durante la investigación como en la comunicación contigo.",
+  },
+  {
+    question: "¿Cuánto tiempo tarda una investigación?",
+    answer:
+      "Depende de la complejidad y el tipo de caso. Tras la consulta inicial te damos una estimación orientativa antes de empezar.",
+  },
 ];
 
+const EMAIL = "buhodetectiveprivado@gmail.com";
+const PHONE = "+34 624 56 27 98";
+const PHONE_HREF = "+34624562798";
+
+function FaqItem({
+  question,
+  answer,
+  index,
+  isOpen,
+  onToggle,
+}: {
+  question: string;
+  answer: string;
+  index: number;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  const buttonId = `faq-button-${index}`;
+  const panelId = `faq-panel-${index}`;
+
+  return (
+    <div className="border-b border-hairline">
+      <h3 className="m-0">
+        <button
+          type="button"
+          id={buttonId}
+          aria-expanded={isOpen}
+          aria-controls={panelId}
+          onClick={onToggle}
+          className="w-full flex items-center justify-between gap-4 py-[18px] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/50 focus-visible:ring-offset-2 focus-visible:ring-offset-paper rounded-[2px]"
+        >
+          <span className="text-[13.5px] font-semibold">{question}</span>
+          {isOpen ? (
+            <MinusIcon className="h-4 w-4 shrink-0" />
+          ) : (
+            <PlusIcon className="h-4 w-4 shrink-0" />
+          )}
+        </button>
+      </h3>
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out ${
+          isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="min-h-0">
+          <p className="text-[13px] leading-[1.6] text-paper-muted pb-5 pr-8">{answer}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function FaqContacto() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
     <section data-light="light" className="bg-paper grid grid-cols-1 lg:grid-cols-[1fr_0.78fr_1fr]">
       <div
@@ -24,23 +101,18 @@ export function FaqContacto() {
           </h2>
         </Reveal>
         <StaggerGroup delay={0.1}>
-          {FAQS.map((question) => (
-            <StaggerItem
-              key={question}
-              className="flex items-center justify-between gap-4 py-[18px] border-b border-hairline"
-            >
-              <span className="text-[13.5px] font-semibold">{question}</span>
-              <PlusIcon className="h-4 w-4 shrink-0" />
+          {FAQS.map((item, index) => (
+            <StaggerItem key={item.question}>
+              <FaqItem
+                question={item.question}
+                answer={item.answer}
+                index={index}
+                isOpen={openIndex === index}
+                onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+              />
             </StaggerItem>
           ))}
         </StaggerGroup>
-        <a
-          href="#faq"
-          className="inline-flex items-center gap-2 text-[12.5px] font-bold uppercase tracking-[0.04em] mt-6"
-        >
-          Ver todas las preguntas
-          <ArrowIcon className="h-3.5 w-3.5" />
-        </a>
       </div>
 
       <Reveal
@@ -59,14 +131,22 @@ export function FaqContacto() {
           <div className="text-[10.5px] font-bold tracking-[0.14em] text-paper-muted-2 uppercase">
             Email
           </div>
-          <div className="text-[13.5px] mt-1.5 mb-6">
-            buhodetectiveprivado@gmail.com
-          </div>
+          <a
+            href={`mailto:${EMAIL}`}
+            className="block text-[13.5px] mt-1.5 mb-6 hover:opacity-70 transition-opacity"
+          >
+            {EMAIL}
+          </a>
           <div className="text-[10.5px] font-bold tracking-[0.14em] text-paper-muted-2 uppercase">
             Teléfono
           </div>
-          <div className="text-[13.5px] mt-1.5">+34 624 56 27 98</div>
-          <CtaButton href="mailto:buhodetectiveprivado@gmail.com" fullWidth className="mt-8">
+          <a
+            href={`tel:${PHONE_HREF}`}
+            className="block text-[13.5px] mt-1.5 hover:opacity-70 transition-opacity"
+          >
+            {PHONE}
+          </a>
+          <CtaButton href={`mailto:${EMAIL}`} fullWidth className="mt-8">
             Contactar ahora
           </CtaButton>
         </div>
@@ -74,7 +154,7 @@ export function FaqContacto() {
 
       <div
         data-light="dark"
-        className="relative bg-ink px-6 md:px-11 py-14 flex flex-col justify-end overflow-hidden min-h-[260px]"
+        className="relative bg-ink px-6 md:px-11 py-14 flex flex-col justify-between overflow-hidden min-h-[360px]"
       >
         <div
           className="absolute inset-0 opacity-60"
@@ -95,11 +175,21 @@ export function FaqContacto() {
         >
           <span />
         </Reveal>
+
         <Reveal className="relative">
-          <div className="w-9 h-px bg-paper/40 mb-4" />
-          <h3 className="font-display text-paper text-[22px] md:text-[24px] leading-[1.12]">
-            La verdad existe. Nosotros te ayudamos a encontrarla.
+          <div className="w-9 h-px bg-paper/40 mb-5" />
+          <h3 className="font-display text-paper text-[34px] md:text-[2.7vw] xl:text-[40px] leading-[1.06]">
+            La verdad existe.
+            <br />
+            Nosotros te ayudamos
+            <br />a encontrarla.
           </h3>
+        </Reveal>
+
+        <Reveal delay={0.1} className="relative mt-10">
+          <CtaButton href="#contacto" variant="light">
+            Cuéntanos tu caso
+          </CtaButton>
         </Reveal>
       </div>
     </section>

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 type WordmarkProps = {
   tone?: "light" | "dark";
-  size?: "sm" | "md";
+  size?: "xs" | "sm" | "md";
   className?: string;
 };
 
@@ -17,7 +17,8 @@ const SOURCES = {
 
 const HEIGHT = {
   md: "h-30",
-  sm: "h-20",
+  sm: "h-15",
+  xs: "h-8",
 };
 
 export function Wordmark({ tone = "light", size = "md", className = "" }: WordmarkProps) {

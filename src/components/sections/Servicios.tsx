@@ -181,20 +181,26 @@ export function Servicios() {
         {SERVICES.map((service) => (
           <StaggerItem
             key={service.number}
-            className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-6 py-6 border-b border-hairline"
+            className="border-b border-hairline"
           >
-            <div className="flex gap-5 items-baseline flex-1">
-              <span className="text-[16px] font-bold text-paper-muted-2 tabular-nums">
-                {service.number}
-              </span>
-              <span className="font-display text-[21px] md:text-[24px]">
-                {service.title}
-              </span>
-            </div>
-            <div className="flex-1 max-w-[280px] text-[13px] leading-[1.55] text-paper-muted">
-              {service.description}
-            </div>
-            <ArrowIcon className="h-[18px] w-[18px] shrink-0 mt-1 hidden sm:block" />
+            <a
+              href="#contacto"
+              aria-label={`Consultar sobre ${service.title}`}
+              className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-6 py-6"
+            >
+              <div className="flex gap-5 items-baseline flex-1">
+                <span className="text-[16px] font-bold text-paper-muted-2 tabular-nums">
+                  {service.number}
+                </span>
+                <span className="font-display text-[21px] md:text-[24px]">
+                  {service.title}
+                </span>
+              </div>
+              <div className="flex-1 max-w-[280px] text-[13px] leading-[1.55] text-paper-muted">
+                {service.description}
+              </div>
+              <ArrowIcon className="h-[18px] w-[18px] shrink-0 mt-1 hidden sm:block" />
+            </a>
           </StaggerItem>
         ))}
       </StaggerGroup>

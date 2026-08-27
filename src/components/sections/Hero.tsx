@@ -5,7 +5,6 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 
 import { CtaButton } from "@/components/ui/CtaButton";
 import { OwlMark } from "@/components/ui/OwlMark";
-import { Wordmark } from "@/components/ui/Wordmark";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import {
   fadeIn,
@@ -15,14 +14,6 @@ import {
   staggerContainer,
   staggerItem,
 } from "@/lib/motion/variants";
-
-const NAV_LINKS = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Cómo trabajamos", href: "#como-trabajamos" },
-  { label: "Nosotros", href: "#confianza" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contacto", href: "#contacto" },
-];
 
 /**
  * Traced from docs/references/hero/hero.png (696x446): the paper wedge is fully
@@ -115,28 +106,6 @@ export function Hero() {
         />
 
         <StaggerGroup triggerOnMount variants={heroStaggerContainer} className="contents">
-          <motion.div className="absolute top-[5.6%] inset-x-0 z-20" style={{ y: contentY }}>
-            <div className="flex items-start justify-between pl-[7.3%] pr-[5.8%]">
-              <StaggerItem variants={heroStaggerItem}>
-                <Wordmark tone="light" />
-              </StaggerItem>
-              <StaggerItem
-                variants={heroStaggerItem}
-                className="hidden xl:flex items-center gap-[3.4%] pt-1"
-              >
-                {NAV_LINKS.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    className="text-[11px] font-semibold uppercase tracking-[0.05em] text-paper hover:opacity-70 transition-opacity whitespace-nowrap"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </StaggerItem>
-            </div>
-          </motion.div>
-
           <motion.div className="absolute top-[23.1%] left-[7.3%]" style={{ y: contentY }}>
             <StaggerItem variants={heroStaggerItem}>
               <p className="text-[clamp(9px,1.55vw,13px)] font-bold uppercase tracking-[0.22em] text-ink-muted">
@@ -243,18 +212,11 @@ export function Hero() {
       <StaggerGroup
         triggerOnMount
         variants={staggerContainer}
-        className="md:hidden bg-ink px-6 pt-7 pb-12"
+        className="md:hidden bg-ink px-6 pt-24 pb-12"
       >
-        <StaggerItem variants={staggerItem} className="flex items-center justify-between">
-          <Wordmark tone="light" size="sm" />
-          <CtaButton href="#contacto" variant="light" className="text-[10px] px-4 py-3">
-            Contactar
-          </CtaButton>
-        </StaggerItem>
-
         <StaggerItem
           variants={staggerItem}
-          className="mt-10 text-[11px] font-bold uppercase tracking-[0.22em] text-ink-muted"
+          className="text-[11px] font-bold uppercase tracking-[0.22em] text-ink-muted"
         >
           Investigación privada
         </StaggerItem>

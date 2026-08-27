@@ -7,6 +7,7 @@ type CtaButtonProps = {
   variant?: "dark" | "light";
   className?: string;
   fullWidth?: boolean;
+  onClick?: () => void;
 };
 
 export function CtaButton({
@@ -15,11 +16,13 @@ export function CtaButton({
   variant = "dark",
   className = "",
   fullWidth = false,
+  onClick,
 }: CtaButtonProps) {
   const isDark = variant === "dark";
   return (
     <Link
       href={href}
+      onClick={onClick}
       className={[
         "relative inline-flex items-center gap-2.5 rounded-[7px] px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.08em] transition-[opacity,transform,box-shadow] duration-200 ease-out hover:opacity-85 hover:-translate-y-0.5",
         fullWidth ? "justify-center w-full" : "",
